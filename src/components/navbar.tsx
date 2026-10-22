@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { Logo } from './logo'
-import { NAV_LINKS } from '@/lib/data'
+import { NAV_LINKS, APP_URL } from '@/lib/data'
 
 export function Navbar() {
   const [open, setOpen] = useState(false)
@@ -29,7 +29,7 @@ export function Navbar() {
 
         <div className="hidden items-center gap-3 md:flex">
           <a
-            href="#cta"
+            href={`${APP_URL}/admin/login`}
             className="rounded-full px-4 py-2 text-sm font-semibold text-blue-600 transition-colors duration-200 hover:bg-blue-50"
           >
             Login
@@ -67,7 +67,7 @@ export function Navbar() {
           ))}
           <div className="mt-2 flex items-center gap-3 border-t border-slate-100 pt-3">
             <a
-              href="#cta"
+              href={`${APP_URL}/admin/login`}
               onClick={() => setOpen(false)}
               className="flex-1 rounded-full px-4 py-2.5 text-center text-sm font-semibold text-blue-600 transition-colors hover:bg-blue-50"
             >

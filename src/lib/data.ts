@@ -1,5 +1,8 @@
 /** Consistent sample data for the landing page. */
 
+/** URL aplikasi portal + admin (web-starter). */
+export const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:5173'
+
 export const NAV_LINKS = [
   { label: 'Features', href: '#features' },
   { label: 'Product', href: '#product' },

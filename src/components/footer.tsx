@@ -7,9 +7,9 @@ const PRODUCT_LINKS = [
   { label: 'Why Vanguard', href: '#product' },
 ]
 
-const COMPANY_LINKS = [
+export const COMPANY_LINKS = [
   { label: 'Get Started', href: '#cta' },
-  { label: 'Login', href: '#cta' },
+  { label: 'Login', href: `${process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:5173'}/admin/login` },
 ]
 
 export function Footer() {
