@@ -1,4 +1,3 @@
-import { Reveal } from './reveal'
 import { PIPELINE_STAGES } from '@/lib/data'
 import type { PublicStats } from '@/lib/api'
 import { formatRupiah } from './dashboard-preview'
@@ -40,9 +39,9 @@ export function Pipeline({ stats }: { stats: PublicStats | null }) {
       }))
 
   return (
-    <section id="pipeline" className="bg-slate-900 py-20 sm:py-28">
+    <section id="pipeline" className="bg-slate-900 py-20 sm:py-28 reveal-item">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <Reveal className="max-w-2xl">
+        <div className="max-w-2xl reveal-item">
           <p className="text-sm font-semibold uppercase tracking-wider text-blue-400">
             Sales Pipeline
           </p>
@@ -57,13 +56,13 @@ export function Pipeline({ stats }: { stats: PublicStats | null }) {
               Live data · updated {new Date(stats.updatedAt).toLocaleString('id-ID')}
             </p>
           )}
-        </Reveal>
+        </div>
 
         <div className="mt-14 -mx-4 overflow-x-auto px-4 pb-4 sm:mx-0 sm:px-0">
           <div className="flex min-w-max gap-4">
             {stages.map((stage, i) => (
-              <Reveal key={stage.name} delay={i * 0.07} className="w-64 shrink-0">
-                <div className="h-full rounded-2xl bg-white/5 p-4 ring-1 ring-white/10">
+              <div key={stage.name} className="w-64 shrink-0 reveal-item" style={{ transitionDelay: `${i * 70}ms` }}>
+                <div className="h-full card bg-white/5 p-4 ring-1 ring-white/10">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <span className={`h-2.5 w-2.5 rounded-full ${stage.color}`} />
@@ -90,7 +89,7 @@ export function Pipeline({ stats }: { stats: PublicStats | null }) {
                       ))}
                     </ul>
                   ) : (
-                    <div className="mt-4 rounded-xl bg-slate-800/80 p-3">
+                    <div className="mt-4 card-pad bg-slate-800/80">
                       <p className="text-2xl font-extrabold text-white">{stage.value}</p>
                       <p className="mt-1 text-[11px] text-slate-400">leads</p>
                       <p className="mt-3 text-xs font-semibold text-emerald-400">{stage.detail}</p>
@@ -104,7 +103,7 @@ export function Pipeline({ stats }: { stats: PublicStats | null }) {
                     />
                   )}
                 </div>
-              </Reveal>
+              </div>
             ))}
           </div>
         </div>

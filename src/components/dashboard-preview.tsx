@@ -65,14 +65,14 @@ export function DashboardPreview({ stats }: { stats: PublicStats | null }) {
   return (
     <div
       aria-hidden="true"
-      className="rounded-2xl border border-slate-200 bg-white p-4 shadow-xl shadow-slate-900/10 sm:p-5"
+      className="card-pad"
     >
       {/* KPI row */}
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         {kpis.map((kpi, i) => {
           const Icon = icons[i]
           return (
-            <div key={kpi.label} className={`rounded-xl bg-gradient-to-br p-3 ${TINTS[i]}`}>
+            <div key={kpi.label} className={`card-pad rounded-xl bg-gradient-to-br p-3 ${TINTS[i]}`}>
               <div className="flex items-center gap-1.5">
                 <Icon className="h-3.5 w-3.5 text-slate-500" />
                 <span className="truncate text-[11px] font-medium text-slate-600">{kpi.label}</span>
@@ -88,7 +88,7 @@ export function DashboardPreview({ stats }: { stats: PublicStats | null }) {
 
       <div className="mt-4 grid gap-4 lg:grid-cols-2">
         {/* Traffic sources + donut */}
-        <div className="rounded-xl border border-slate-100 p-4">
+        <div className="card-pad">
           <p className="text-xs font-semibold text-slate-700">
             {stats ? 'Leads by Source' : 'Traffic Sources'}
           </p>
@@ -111,7 +111,7 @@ export function DashboardPreview({ stats }: { stats: PublicStats | null }) {
         </div>
 
         {/* Top campaigns */}
-        <div className="rounded-xl border border-slate-100 p-4">
+        <div className="card-pad">
           <p className="text-xs font-semibold text-slate-700">Top Performing Campaigns</p>
           <ul className="mt-3 space-y-2.5">
             {campaigns.map((c, i) => (

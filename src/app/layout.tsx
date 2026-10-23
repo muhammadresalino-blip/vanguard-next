@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { RevealScript } from '@/components/reveal-script'
 
 export const metadata: Metadata = {
   title: 'Vanguard Marketing — Grow Your Business with Smarter Marketing',
@@ -24,7 +25,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-white text-slate-900">{children}</body>
+      <body className="bg-white text-slate-900">
+        {children}
+        <RevealScript />
+      </body>
     </html>
   )
 }

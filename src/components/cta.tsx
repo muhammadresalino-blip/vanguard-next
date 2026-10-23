@@ -18,9 +18,9 @@ export function CTA() {
   }
 
   return (
-    <section id="cta" className="bg-white py-20 sm:py-28">
+    <section id="cta" className="bg-white py-20 sm:py-28 reveal-item">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl rounded-3xl bg-gradient-to-br from-blue-500 to-indigo-600 px-6 py-14 text-center sm:px-14">
+        <div className="mx-auto max-w-3xl rounded-3xl bg-gradient-to-br from-blue-500 to-indigo-600 px-6 py-14 text-center sm:px-14 reveal-item">
           <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
             Grow your business with smarter marketing
           </h2>
@@ -39,7 +39,7 @@ export function CTA() {
           ) : (
             <form
               onSubmit={handleSubmit}
-              className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row"
+              className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex_row"
               noValidate
             >
               <label htmlFor="waitlist-email" className="sr-only">
@@ -56,13 +56,11 @@ export function CTA() {
                 }}
                 placeholder="you@company.com"
                 aria-invalid={state === 'error'}
-                className={`flex-1 rounded-full border bg-white px-5 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-white/60 ${
-                  state === 'error' ? 'border-red-300' : 'border-transparent'
-                }`}
+                className={`input ${state === 'error' ? 'border-red-300' : 'border-transparent'}`}
               />
               <button
                 type="submit"
-                className="inline-flex items-center justify-center gap-1.5 rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-slate-800"
+                className="btn-dark"
               >
                 Get Started
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />

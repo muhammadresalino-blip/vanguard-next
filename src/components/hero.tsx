@@ -1,11 +1,10 @@
-import { Reveal } from './reveal'
 import { DashboardPreview } from './dashboard-preview'
 import type { PublicStats } from '@/lib/api'
 import { ArrowRight, PlayCircle } from 'lucide-react'
 
 export function Hero({ stats }: { stats: PublicStats | null }) {
   return (
-    <section id="top" className="relative overflow-hidden bg-white">
+    <section id="top" className="relative overflow-hidden bg-white reveal-item">
       {/* Latar lembut: blob gradien samar, bukan gambar */}
       <div
         aria-hidden="true"
@@ -18,7 +17,7 @@ export function Hero({ stats }: { stats: PublicStats | null }) {
 
       <div className="mx-auto max-w-7xl px-4 pb-16 pt-16 sm:px-6 sm:pb-24 sm:pt-24 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <Reveal>
+          <div className="reveal-item">
             <p className="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
               New: AI-powered campaign insights
@@ -39,14 +38,14 @@ export function Hero({ stats }: { stats: PublicStats | null }) {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#cta"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-blue-500 px-7 py-3.5 text-sm font-semibold text-white shadow-md shadow-blue-500/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/30"
+                className="btn-primary btn-lg"
               >
                 Get Started Free
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </a>
               <a
                 href="#product"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-7 py-3.5 text-sm font-semibold text-slate-700 transition-all duration-200 hover:border-slate-300 hover:bg-slate-50"
+                className="btn-outline btn-lg"
               >
                 <PlayCircle className="h-5 w-5 text-blue-500" aria-hidden="true" />
                 See how it works
@@ -56,11 +55,11 @@ export function Hero({ stats }: { stats: PublicStats | null }) {
             <p className="mt-6 text-xs text-slate-400">
               Free 14-day trial · No credit card required
             </p>
-          </Reveal>
+          </div>
 
-          <Reveal delay={0.15}>
+          <div className="reveal-item">
             <DashboardPreview stats={stats} />
-          </Reveal>
+          </div>
         </div>
       </div>
     </section>

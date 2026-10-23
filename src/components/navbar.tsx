@@ -1,12 +1,17 @@
 'use client'
 
-import { useState } from 'react'
-import { Menu, X } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { Menu, X, ArrowRight } from 'lucide-react'
 import { Logo } from './logo'
 import { NAV_LINKS, APP_URL } from '@/lib/data'
 
 export function Navbar() {
   const [open, setOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => { setMounted(true) }, [])
+
+  const revealClass = mounted ? 'reveal-item' : ''
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-md">
@@ -20,7 +25,7 @@ export function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-slate-600 transition-colors duration-200 hover:text-slate-900"
+              className={`text-sm font-medium text-slate-600 transition-colors duration-200 hover:text-slate-900 ${revealClass}`}
             >
               {link.label}
             </a>
@@ -30,15 +35,16 @@ export function Navbar() {
         <div className="hidden items-center gap-3 md:flex">
           <a
             href={`${APP_URL}/admin/login`}
-            className="rounded-full px-4 py-2 text-sm font-semibold text-blue-600 transition-colors duration-200 hover:bg-blue-50"
+            className="btn-ghost btn-sm"
           >
             Login
           </a>
           <a
             href="#cta"
-            className="rounded-full bg-blue-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm shadow-blue-500/25 transition-all duration-200 hover:bg-blue-600 hover:shadow-md hover:shadow-blue-500/30"
+            className="btn-primary btn-sm"
           >
             Get Started
+            <ArrowRight className="h-4 w-4" />
           </a>
         </div>
 
@@ -69,16 +75,17 @@ export function Navbar() {
             <a
               href={`${APP_URL}/admin/login`}
               onClick={() => setOpen(false)}
-              className="flex-1 rounded-full px-4 py-2.5 text-center text-sm font-semibold text-blue-600 transition-colors hover:bg-blue-50"
+              className="flex-1 btn-ghost btn-sm"
             >
               Login
             </a>
             <a
               href="#cta"
               onClick={() => setOpen(false)}
-              className="flex-1 rounded-full bg-blue-500 px-4 py-2.5 text-center text-sm font-semibold text-white transition-colors hover:bg-blue-600"
+              className="flex-1 btn-primary btn-sm"
             >
               Get Started
+              <ArrowRight className="h-4 w-4" />
             </a>
           </div>
         </div>

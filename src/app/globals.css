@@ -3,6 +3,51 @@
 @theme {
   --font-heading: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
   --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+
+  --color-accent-50: #ecfdf5;
+  --color-accent-100: #d1fae5;
+  --color-accent-200: #a7f3d0;
+  --color-accent-300: #6ee7b7;
+  --color-accent-400: #34d399;
+  --color-accent-500: #10b981;
+  --color-accent-600: #059669;
+  --color-accent-700: #047857;
+  --color-accent-800: #065f46;
+  --color-accent-900: #064e3b;
+
+  --color-secondary-50: #eef2ff;
+  --color-secondary-100: #e0e7ff;
+  --color-secondary-200: #c7d2fe;
+  --color-secondary-300: #a5b4fc;
+  --color-secondary-400: #818cf8;
+  --color-secondary-500: #6366f1;
+  --color-secondary-600: #4f46e5;
+  --color-secondary-700: #4338ca;
+  --color-secondary-800: #3730a3;
+  --color-secondary-900: #312e81;
+
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f5f5f5;
+  --color-neutral-200: #e5e5e5;
+  --color-neutral-300: #d4d4d4;
+  --color-neutral-400: #a3a3a3;
+  --color-neutral-500: #737373;
+  --color-neutral-600: #525252;
+  --color-neutral-700: #404040;
+  --color-neutral-800: #262626;
+  --color-neutral-900: #171717;
+  --color-neutral-950: #0a0a0a;
 }
 
 html {
@@ -16,13 +61,131 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1,
-h2,
-h3,
-h4 {
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: #0f172a;
 }
 
+@layer utilities {
+  /* --- Button base ------------------------------------------------------- */
+  .btn,
+  .btn-primary,
+  .btn-accent,
+  .btn-teal,
+  .btn-outline,
+  .btn-ghost,
+  .btn-dark {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold
+      transition-all duration-200 disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply bg-primary-500 text-white shadow-[0_4px_16px_rgba(59,130,246,0.30)]
+      hover:-translate-y-0.5 hover:bg-primary-600 hover:shadow-[0_8px_24px_rgba(59,130,246,0.38)]
+      active:translate-y-0 active:scale-[0.98];
+  }
+
+  .btn-accent {
+    @apply bg-accent-500 text-white shadow-[0_4px_16px_rgba(16,185,129,0.30)]
+      hover:-translate-y-0.5 hover:bg-accent-600 hover:shadow-[0_8px_24px_rgba(16,185,129,0.38)]
+      active:translate-y-0 active:scale-[0.98];
+  }
+
+  .btn-teal {
+    @apply bg-secondary-500 text-white shadow-[0_4px_16px_rgba(99,102,241,0.30)]
+      hover:-translate-y-0.5 hover:bg-secondary-600 hover:shadow-[0_8px_24px_rgba(99,102,241,0.38)]
+      active:translate-y-0 active:scale-[0.98];
+  }
+
+  .btn-dark {
+    @apply bg-slate-900 text-white shadow-md hover:-translate-y-0.5 hover:bg-slate-800
+      hover:shadow-lg active:translate-y-0 active:scale-[0.98];
+  }
+
+  .btn-outline {
+    @apply border-2 border-neutral-200 bg-white text-neutral-700
+      hover:-translate-y-0.5 hover:border-primary-300 hover:bg-primary-50 hover:text-primary-600
+      active:translate-y-0 active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900;
+  }
+
+  .btn-sm {
+    @apply rounded-full px-3.5 py-2 text-xs;
+  }
+
+  .btn-lg {
+    @apply rounded-full px-7 py-3.5 text-base;
+  }
+
+  /* --- Card -------------------------------------------------------------- */
+  .card {
+    @apply rounded-3xl border border-neutral-100 bg-white shadow-[0_2px_12px_rgba(0,0,0,0.04)]
+      transition-all duration-200;
+  }
+
+  .card:hover {
+    @apply shadow-[0_8px_28px_rgba(0,0,0,0.08)];
+    transform: translateY(-2px);
+  }
+
+  .card-pad {
+    @apply rounded-3xl border border-neutral-100 bg-white p-6 shadow-[0_2px_12px_rgba(0,0,0,0.04)];
+  }
+
+  /* --- Form -------------------------------------------------------------- */
+  .input,
+  .textarea,
+  .select {
+    @apply w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm text-neutral-900
+      placeholder:text-neutral-400 transition-all duration-200
+      hover:border-neutral-300 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20;
+  }
+
+  .input {
+    @apply rounded-full;
+  }
+
+  .textarea {
+    @apply min-h-[120px] resize-y;
+  }
+
+  /* --- Gradient text ----------------------------------------------------- */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent;
+  }
+
+  /* --- Reveal animation -------------------------------------------------- */
+  .reveal-item {
+    opacity: 0;
+    translate: 0 18px;
+    transition: opacity 0.5s ease-out, translate 0.5s ease-out;
+  }
+
+  .reveal-item.is-in {
+    opacity: 1;
+    translate: 0 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-item {
+      opacity: 1;
+      translate: none;
+      transition: none;
+    }
+  }
+
+  .divider {
+    @apply h-px w-full bg-neutral-100;
+  }
+}
+
+/* --- Global reduced motion --------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

@@ -14,10 +14,10 @@ export const COMPANY_LINKS = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-slate-200 bg-white">
+    <footer className="border-t border-slate-200 bg-white reveal-item">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-4">
-          <div className="md:col-span-2">
+          <div className="md:col-span-2 reveal-item">
             <Logo />
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-500">
               The all-in-one marketing platform to capture leads, manage your pipeline,
@@ -25,7 +25,7 @@ export function Footer() {
             </p>
           </div>
 
-          <nav aria-label="Product">
+          <nav aria-label="Product" className="reveal-item">
             <h3 className="text-sm font-semibold text-slate-900">Product</h3>
             <ul className="mt-4 space-y-3">
               {PRODUCT_LINKS.map((link) => (
@@ -41,7 +41,7 @@ export function Footer() {
             </ul>
           </nav>
 
-          <nav aria-label="Company">
+          <nav aria-label="Company" className="reveal-item">
             <h3 className="text-sm font-semibold text-slate-900">Company</h3>
             <ul className="mt-4 space-y-3">
               {NAV_LINKS.map((link) => (

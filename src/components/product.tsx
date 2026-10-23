@@ -1,4 +1,3 @@
-import { Reveal } from './reveal'
 import type { PublicStats } from '@/lib/api'
 import { TrendingUp, TrendingDown, Timer } from 'lucide-react'
 
@@ -14,9 +13,9 @@ const SAMPLE_B = [20, 28, 52, 34, 46, 38, 55]
 
 export function Product({ stats }: { stats: PublicStats | null }) {
   return (
-    <section id="product" className="bg-slate-50 py-20 sm:py-28">
+    <section id="product" className="bg-slate-50 py-20 sm:py-28 reveal-item">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <Reveal className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-2xl text-center reveal-item">
           <p className="text-sm font-semibold uppercase tracking-wider text-indigo-600">
             Why Vanguard
           </p>
@@ -26,32 +25,32 @@ export function Product({ stats }: { stats: PublicStats | null }) {
           <p className="mt-4 text-lg text-slate-500">
             {stats ? 'Live numbers from your workflow — not vanity metrics.' : 'Clear metrics from the workflow — not vanity metrics.'}
           </p>
-        </Reveal>
+        </div>
 
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
           {stats ? (
             <>
-              <Reveal>
+              <div className="card reveal-item">
                 <LeadsWeekCard stats={stats} />
-              </Reveal>
-              <Reveal delay={0.08}>
+              </div>
+              <div className="card reveal-item" style={{ transitionDelay: '80ms' }}>
                 <ResponseCard stats={stats} />
-              </Reveal>
-              <Reveal delay={0.16}>
+              </div>
+              <div className="card reveal-item" style={{ transitionDelay: '160ms' }}>
                 <SlaCard stats={stats} />
-              </Reveal>
+              </div>
             </>
           ) : (
             <>
-              <Reveal>
+              <div className="card reveal-item">
                 <SampleBarsCard />
-              </Reveal>
-              <Reveal delay={0.08}>
+              </div>
+              <div className="card reveal-item" style={{ transitionDelay: '80ms' }}>
                 <SampleLineCard />
-              </Reveal>
-              <Reveal delay={0.16}>
+              </div>
+              <div className="card reveal-item" style={{ transitionDelay: '160ms' }}>
                 <SampleCounterCard />
-              </Reveal>
+              </div>
             </>
           )}
         </div>
@@ -67,7 +66,7 @@ function LeadsWeekCard({ stats }: { stats: PublicStats }) {
   const up = (stats.trendDeltaPct ?? 0) >= 0
 
   return (
-    <article className="h-full rounded-2xl border border-slate-200 bg-white p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-900/5">
+    <article className="card">
       <p className="text-sm font-medium text-slate-500">Leads This Week</p>
       <p className="mt-1 flex items-baseline gap-2">
         <span className="text-3xl font-extrabold text-slate-900">{stats.trendTotal}</span>
@@ -114,7 +113,7 @@ function ResponseCard({ stats }: { stats: PublicStats }) {
   const step = (w - 20) / 6
 
   return (
-    <article className="h-full rounded-2xl border border-slate-200 bg-white p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-900/5">
+    <article className="card">
       <div className="flex items-center justify-between">
         <p className="text-sm font-medium text-slate-500">Avg. Response</p>
         <span className="flex items-center gap-1 text-[10px] font-medium text-slate-400">
@@ -170,7 +169,7 @@ function SlaCard({ stats }: { stats: PublicStats }) {
   const pct = stats.sla.withinTargetPct ?? 0
 
   return (
-    <article className="h-full overflow-hidden rounded-2xl border border-slate-200 bg-white p-6">
+    <article className="card overflow-hidden">
       <p className="flex items-center gap-1.5 text-sm font-medium text-slate-500">
         <Timer className="h-4 w-4 text-slate-400" aria-hidden="true" />
         Response SLA
@@ -211,7 +210,7 @@ function SlaCard({ stats }: { stats: PublicStats }) {
 
 function SampleBarsCard() {
   return (
-    <article className="h-full rounded-2xl border border-slate-200 bg-white p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-900/5">
+    <article className="card">
       <p className="text-sm font-medium text-slate-500">Leads Assigned</p>
       <p className="mt-1 flex items-baseline gap-2">
         <span className="text-3xl font-extrabold text-slate-900">506</span>
@@ -233,7 +232,7 @@ function SampleBarsCard() {
 
 function SampleLineCard() {
   return (
-    <article className="h-full rounded-2xl border border-slate-200 bg-white p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-900/5">
+    <article className="card">
       <div className="flex items-center justify-between">
         <p className="text-sm font-medium text-slate-500">Messages Sent</p>
         <div className="flex items-center gap-3 text-[10px] font-medium text-slate-400">
@@ -253,7 +252,7 @@ function SampleLineCard() {
 
 function SampleCounterCard() {
   return (
-    <article className="h-full overflow-hidden rounded-2xl border border-slate-200 bg-white p-6">
+    <article className="card overflow-hidden">
       <p className="text-sm font-medium text-slate-500">Work Days Saved</p>
       <div className="mt-4 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 p-4 text-white">
         <div className="flex justify-center gap-2" aria-hidden="true">
