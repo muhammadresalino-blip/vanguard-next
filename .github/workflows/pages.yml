@@ -41,6 +41,9 @@ jobs:
           NEXT_PUBLIC_APP_URL: ${{ vars.NEXT_PUBLIC_APP_URL }}
           GITHUB_PAGES: 'true'
 
+      - name: Fix asset paths for GitHub Pages
+        run: node scripts/fix-paths.js
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
