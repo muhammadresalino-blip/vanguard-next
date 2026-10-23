@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-@source inline("reveal-item is-in");
+@source inline("reveal-item is-in btn btn-primary btn-accent btn-teal btn-outline btn-ghost btn-dark btn-sm btn-lg card card-pad input textarea select text-gradient divider btn-ghost");
 
 @theme {
   --font-heading: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
