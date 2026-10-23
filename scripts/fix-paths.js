@@ -20,11 +20,16 @@ function walk(dir) {
 }
 
 const htmlFiles = walk(OUT_DIR).filter(f => f.endsWith('.html'))
+console.log(`Found ${htmlFiles.length} HTML files:`, htmlFiles)
 let fixed = 0
 
 for (const file of htmlFiles) {
   let content = readFileSync(file, 'utf8')
   const original = content
+  // Rewrite absolute _next/static/ paths to include repo prefix
+  const matches1 = content.match(/(href|src)="\/_next\/static\//g)
+  const matches2 = content.match(/href="\/_next\/static\//g)
+  console.log(`  ${file}: pattern1=${matches1?.length || 0}, pattern2=${matches2?.length || 0}`)
   // Rewrite absolute _next/static/ paths to include repo prefix
   content = content.replace(/(href|src)="\/_next\/static\//g, `$1="${PREFIX}/_next/static/`)
   // Also handle preload/prefetch links
