@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@source inline("reveal-item is-in");
+
 @theme {
   --font-heading: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
   --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
